@@ -12,7 +12,7 @@
   }
 
   .vjs-overlay-no-background {
-    max-width: 33%;
+//    max-width: 33%;
   }
 
   .vjs-overlay-background {
@@ -20,8 +20,12 @@
     background-color: #646464;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: round($nudge / 2);
-    padding: $nudge * 2;
-    width: 33%;
+//    padding: $nudge * 2;
+//    width: 33%;
+  }
+
+  .vjs-overlay-dot {
+
   }
 
   .vjs-overlay-top-left {

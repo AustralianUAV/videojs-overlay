@@ -36,8 +36,8 @@ const isNumber = n => typeof n === 'number' && n === n;
 /**
  * Whether a value is a string with no whitespace.
  *
- * @param  {String} s
- * @return {Boolean}
+ * @param  {string} s
+ * @return {boolean}
  */
 const hasNoWhitespace = s => typeof s === 'string' && (/^\S+$/).test(s);
 
@@ -93,18 +93,37 @@ class Overlay extends Component {
     const content = options.content;
 
     const background = options.showBackground ? 'vjs-overlay-background' : 'vjs-overlay-no-background';
-    const el = dom.createEl('div', {
-      className: `
+    let el;
+
+    if (options.type === 'dot') {
+      el = dom.createEl('div', {
+        className: `
+          vjs-overlay
+          vjs-overlay-dot
+          ${options.class}
+          ${background}
+          vjs-hidden
+        `
+      });
+      el.style.cssText = 'position:absolute;top:' + options.yPos + 'px;left:' + options.xPos + 'px';
+    } else {
+      el = dom.createEl('div', {
+        className: `
         vjs-overlay
         vjs-overlay-${options.align}
         ${options.class}
         ${background}
         vjs-hidden
       `
-    });
+      });
+    }
 
     if (typeof content === 'string') {
-      el.innerHTML = content;
+      if (options.type === 'dot') {
+        el.innerHTML = '&bull; &nbsp; ' + content;
+      } else {
+        el.innerHTML = content;
+      }
     } else if (content instanceof window.DocumentFragment) {
       el.appendChild(content);
     } else {
@@ -116,6 +135,7 @@ class Overlay extends Component {
 
   /**
    * Logs debug errors
+   *
    * @param  {...[type]} args [description]
    * @return {[type]}         [description]
    */
@@ -160,11 +180,11 @@ class Overlay extends Component {
   /**
    * Determine whether or not the overlay should hide.
    *
-   * @param  {Number} time
+   * @param  {number} time
    *         The current time reported by the player.
-   * @param  {String} type
+   * @param  {string} type
    *         An event type.
-   * @return {Boolean}
+   * @return {boolean}
    */
   shouldHide_(time, type) {
     const end = this.options_.end;
@@ -195,11 +215,11 @@ class Overlay extends Component {
   /**
    * Determine whether or not the overlay should show.
    *
-   * @param  {Number} time
+   * @param  {number} time
    *         The current time reported by the player.
-   * @param  {String} type
+   * @param  {string} type
    *         An event type.
-   * @return {Boolean}
+   * @return {boolean}
    */
   shouldShow_(time, type) {
     const start = this.options_.start;
