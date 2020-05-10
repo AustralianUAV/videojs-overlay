@@ -106,6 +106,17 @@ class Overlay extends Component {
         `
       });
       el.style.cssText = 'position:absolute;top:' + options.yPos + 'px;left:' + options.xPos + 'px';
+    } else if (options.type === 'pin') {
+      el = dom.createEl('div', {
+        className: `
+          vjs-overlay
+          vjs-overlay-pin
+          ${options.class}
+          ${background}
+          vjs-hidden
+        `
+      });
+      el.style.cssText = 'position:absolute;top:' + options.yPos + 'px;left:' + options.xPos + 'px';
     } else {
       el = dom.createEl('div', {
         className: `

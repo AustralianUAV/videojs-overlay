@@ -132,6 +132,11 @@
           className: "\n          vjs-overlay\n          vjs-overlay-dot\n          " + options.class + "\n          " + background + "\n          vjs-hidden\n        "
         });
         el.style.cssText = 'position:absolute;top:' + options.yPos + 'px;left:' + options.xPos + 'px';
+      } else if (options.type === 'pin') {
+        el = dom.createEl('div', {
+          className: "\n          vjs-overlay\n          vjs-overlay-pin\n          " + options.class + "\n          " + background + "\n          vjs-hidden\n        "
+        });
+        el.style.cssText = 'position:absolute;top:' + options.yPos + 'px;left:' + options.xPos + 'px';
       } else {
         el = dom.createEl('div', {
           className: "\n        vjs-overlay\n        vjs-overlay-" + options.align + "\n        " + options.class + "\n        " + background + "\n        vjs-hidden\n      "
