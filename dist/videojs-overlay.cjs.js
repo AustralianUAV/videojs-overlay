@@ -116,12 +116,12 @@ function (_Component) {
 
     return _this;
   }
+  /*registerClickCallback(func) {
+    this.clickCallback = func;
+  }*/
+
 
   var _proto = Overlay.prototype;
-
-  _proto.registerClickCallback = function registerClickCallback(func) {
-    this.clickCallback = func;
-  };
 
   _proto.createEl = function createEl() {
     var options = this.options_;
@@ -145,7 +145,7 @@ function (_Component) {
       });
     }
 
-    el.onclick = this.clickCallback;
+    el.onclick = options.onClick;
     /*function() {
       console.log('overlay clicked'); return false;
     };*/
