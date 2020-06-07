@@ -119,6 +119,10 @@ function (_Component) {
 
   var _proto = Overlay.prototype;
 
+  _proto.registerClickCallback = function registerClickCallback(func) {
+    this.clickCallback = func;
+  };
+
   _proto.createEl = function createEl() {
     var options = this.options_;
     var content = options.content;
@@ -141,10 +145,10 @@ function (_Component) {
       });
     }
 
-    el.onclick = function () {
-      console.log('overlay clicked');
-      return false;
-    };
+    el.onclick = this.clickCallback;
+    /*function() {
+      console.log('overlay clicked'); return false;
+    };*/
 
     if (typeof content === 'string') {
       if (options.type === 'dot') {

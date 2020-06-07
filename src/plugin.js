@@ -88,6 +88,10 @@ class Overlay extends Component {
     this.hide();
   }
 
+  registerClickCallback(func) {
+    this.clickCallback = func;
+  }
+
   createEl() {
     const options = this.options_;
     const content = options.content;
@@ -129,9 +133,10 @@ class Overlay extends Component {
       });
     }
 
-    el.onclick = function() {
+    el.onclick = this.clickCallback;
+    /*function() {
       console.log('overlay clicked'); return false;
-    };
+    };*/
 
     if (typeof content === 'string') {
       if (options.type === 'dot') {
