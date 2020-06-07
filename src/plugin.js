@@ -130,7 +130,7 @@ class Overlay extends Component {
     }
 
     el.onclick = function() {
-      console.log("overlay clicked"); return false;
+      console.log('overlay clicked'); return false;
     };
 
     if (typeof content === 'string') {

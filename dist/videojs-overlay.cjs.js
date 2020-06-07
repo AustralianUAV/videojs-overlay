@@ -141,6 +141,11 @@ function (_Component) {
       });
     }
 
+    el.onclick = function () {
+      console.log('overlay clicked');
+      return false;
+    };
+
     if (typeof content === 'string') {
       if (options.type === 'dot') {
         el.innerHTML = '&bull; &nbsp; ' + content;
