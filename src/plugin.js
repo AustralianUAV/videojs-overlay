@@ -88,7 +88,7 @@ class Overlay extends Component {
     this.hide();
   }
 
-  /*registerClickCallback(func) {
+  /* registerClickCallback(func) {
     this.clickCallback = func;
   }*/
 
@@ -115,6 +115,7 @@ class Overlay extends Component {
         className: `
           vjs-overlay
           vjs-overlay-pin
+          vjs-overlay-pin-${options.color}
           ${options.class}
           ${background}
           vjs-hidden
@@ -134,7 +135,7 @@ class Overlay extends Component {
     }
 
     el.onclick = options.onClick;
-    /*function() {
+    /* function() {
       console.log('overlay clicked'); return false;
     };*/
 
